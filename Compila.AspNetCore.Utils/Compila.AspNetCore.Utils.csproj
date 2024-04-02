@@ -4,11 +4,15 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<EnablePackageValidation>true</EnablePackageValidation>
+		<ImplicitUsings>True</ImplicitUsings>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
-		<PackageReference Include="Compila.Net.Utils" Version="1.0.12" />
+		<PackageReference Include="DotNet.ReproducibleBuilds" Version="1.1.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 	</ItemGroup>
 	
 	<PropertyGroup>
@@ -21,7 +25,7 @@
 		<PackageProjectUrl>https://github.com/compila-ltd/Compila.AspNetCore.Utils</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/compila-ltd/Compila.AspNetCore.Utils</RepositoryUrl>
 		<PackageId>Compila.AspNetCore.Utils</PackageId>
-		<Version>0.1.0</Version>
+		<Version>1.0.0</Version>
 		<Authors>Eyonys Gonzalez Marcaida</Authors>
 		<Company>Compila</Company>
 		<PackageDescription>Utils for Compila development projects.</PackageDescription>
@@ -42,13 +46,6 @@
         - Maximum size: 1MB
     -->
 		<None Include="icon.png" Pack="true" PackagePath="" />
-	</ItemGroup>
-	<ItemGroup>
-		<PackageReference Include="DotNet.ReproducibleBuilds" Version="1.1.1">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="RestSharp" Version="110.2.0" />
 	</ItemGroup>
 
 	<ItemGroup>
