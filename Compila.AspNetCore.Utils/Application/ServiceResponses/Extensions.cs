@@ -1,6 +1,4 @@
-﻿using Compila.Net.Utils.ServiceResponses;
-
-namespace Compila.AspNetCore.Utils.Application.ServiceResponses
+﻿namespace Compila.AspNetCore.Utils.Application.ServiceResponses
 {
     public static class ServiceBaseResponseExtensions
     {
