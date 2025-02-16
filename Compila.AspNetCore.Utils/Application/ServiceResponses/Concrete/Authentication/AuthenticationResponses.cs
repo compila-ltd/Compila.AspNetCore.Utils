@@ -54,7 +54,7 @@ namespace Compila.AspNetCore.Utils.Application.ServiceResponses.Concrete.Authent
     public class ErrorConfirmingEmailResponse : ServiceBadRequestResponseWithErrorCode
     {
         public ErrorConfirmingEmailResponse() : base(new ErrorDetailsWithCode("Error confirming email address.", 400, AuthenticationErrorCodes.ErrorConfirmingEmail)) { }
-        public ErrorConfirmingEmailResponse(string emailAddress) : base(new ErrorDetailsWithCode($"Error confirming email address {emailAddress}.", 400, "E400010")) { }
+        public ErrorConfirmingEmailResponse(string emailAddress) : base(new ErrorDetailsWithCode($"Error confirming email address {emailAddress}.", 400, AuthenticationErrorCodes.ErrorConfirmingEmail)) { }
     }
 
     public class EmailConfirmationTokenError : ServiceBadRequestResponseWithErrorCode
@@ -73,6 +73,8 @@ namespace Compila.AspNetCore.Utils.Application.ServiceResponses.Concrete.Authent
     public class UserNotFoundResponse : ServiceNotFoundResponse
     {
         public UserNotFoundResponse() : base("User does not exists.") { }
+        public UserNotFoundResponse(Guid userId) : base($"User with Id {userId} not found.") { }
+        public UserNotFoundResponse(string userName) : base($"User with username {userName} not found.") { }
     }
 
     #endregion

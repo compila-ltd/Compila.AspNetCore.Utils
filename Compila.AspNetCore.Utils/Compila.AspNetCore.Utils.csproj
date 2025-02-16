@@ -32,7 +32,7 @@
 		<RepositoryUrl>https://github.com/compila-ltd/Compila.AspNetCore.Utils</RepositoryUrl>
 		<RepositoryBranch>master</RepositoryBranch>
 		<PackageId>Compila.AspNetCore.Utils</PackageId>
-		<Version>1.0.6</Version>
+		<Version>1.0.7</Version>
 		<Authors>Eyonys Gonzalez Marcaida</Authors>
 		<Company>Compila</Company>
 		<PackageDescription>Utils for Compila development projects.</PackageDescription>
