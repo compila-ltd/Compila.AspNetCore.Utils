@@ -8,14 +8,15 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
-		<PackageReference Include="DotNet.ReproducibleBuilds" Version="1.2.25">
+		<PackageReference Include="DotNet.ReproducibleBuilds" Version="1.2.39">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Compila.Net.Utils" Version="1.0.25" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.2" />
-		<PackageReference Include="RabbitMQ.Client" Version="7.0.0" />
+		<PackageReference Include="Compila.Net.Utils" Version="1.0.26" />
+		<PackageReference Include="FluentValidation" Version="12.1.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Json" Version="2.3.9" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.10" />
+		<PackageReference Include="RabbitMQ.Client" Version="7.2.0" />
 	</ItemGroup>
 	
 	<PropertyGroup>
@@ -32,7 +33,7 @@
 		<RepositoryUrl>https://github.com/compila-ltd/Compila.AspNetCore.Utils</RepositoryUrl>
 		<RepositoryBranch>master</RepositoryBranch>
 		<PackageId>Compila.AspNetCore.Utils</PackageId>
-		<Version>1.0.7</Version>
+		<Version>1.0.8</Version>
 		<Authors>Eyonys Gonzalez Marcaida</Authors>
 		<Company>Compila</Company>
 		<PackageDescription>Utils for Compila development projects.</PackageDescription>
