@@ -5,7 +5,9 @@ on:
   workflow_dispatch: # Allow running the workflow manually from the GitHub UI
   push:
     branches:
-      - 'master'       # Run the workflow when pushing to the main branch
+      - 'net8'
+      - 'net9'
+      - 'net10'
   pull_request:
     branches:
       - '*'          # Run the workflow for all pull requests
