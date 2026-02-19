@@ -113,38 +113,29 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    # Detect target framework based on branch
-    - name: Determine Target Framework
-      id: target_framework
+    # Detect .NET SDK version based on branch
+    - name: Determine .NET SDK Version
+      id: dotnet_version
       run: |
         $branch = "${{ github.ref_name }}"
-        $targetFramework = "net9.0"
         $dotnetVersion = "9.0.101"
 
         if ($branch -eq "net8" -or $branch.StartsWith("net8-")) {
-          $targetFramework = "net8.0"
           $dotnetVersion = "8.0"
         } elseif ($branch -eq "net9" -or $branch.StartsWith("net9-")) {
-          $targetFramework = "net9.0"
           $dotnetVersion = "9.0.101"
         } elseif ($branch -eq "net10" -or $branch.StartsWith("net10-")) {
-          $targetFramework = "net10.0"
           $dotnetVersion = "10.0"
-        } elseif ($branch -eq "master" -or $branch -eq "main") {
-          $targetFramework = "net9.0"
-          $dotnetVersion = "9.0.101"
         }
 
-        echo "target_framework=$targetFramework" >> $env:GITHUB_OUTPUT
-        echo "dotnet_version=$dotnetVersion" >> $env:GITHUB_OUTPUT
-        echo "Detected branch: $branch -> Target Framework: $targetFramework"
+        echo "version=$dotnetVersion" >> $env:GITHUB_OUTPUT
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: ${{ steps.target_framework.outputs.dotnet_version }}
+        dotnet-version: ${{ steps.dotnet_version.outputs.version }}
     - name: Run tests
-      run: dotnet test --configuration Release /p:TargetFramework=${{ steps.target_framework.outputs.target_framework }}
+      run: dotnet test --configuration Release
 
   deploy:
     # Publish only when creating a GitHub Release
@@ -160,11 +151,28 @@ jobs:
           name: nuget
           path: ${{ env.NuGetDirectory }}
 
-      # Install the .NET SDK indicated in the global.json file
+      # Detect .NET SDK version based on branch
+      - name: Determine .NET SDK Version
+        id: dotnet_version
+        run: |
+          $branch = "${{ github.ref_name }}"
+          $dotnetVersion = "9.0.101"
+
+          if ($branch -eq "net8" -or $branch.StartsWith("net8-")) {
+            $dotnetVersion = "8.0"
+          } elseif ($branch -eq "net9" -or $branch.StartsWith("net9-")) {
+            $dotnetVersion = "9.0.101"
+          } elseif ($branch -eq "net10" -or $branch.StartsWith("net10-")) {
+            $dotnetVersion = "10.0"
+          }
+
+          echo "version=$dotnetVersion" >> $env:GITHUB_OUTPUT
+
+      # Install the .NET SDK based on detected branch
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 9.0.101
+          dotnet-version: ${{ steps.dotnet_version.outputs.version }}
 
       # Publish all NuGet packages to NuGet.org
       # Use --skip-duplicate to prevent errors if a package with the same version already exists.
