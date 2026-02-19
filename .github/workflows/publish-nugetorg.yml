@@ -153,6 +153,43 @@ jobs:
           name: nuget
           path: ${{ env.NuGetDirectory }}
 
+      # Validate version matches branch
+      - name: Validate Version and Branch
+        run: |
+          $branch = "${{ github.ref_name }}"
+          $releaseTag = "${{ github.event.release.tag_name }}"
+
+          # Extract version from tag (remove 'v' prefix if present)
+          $version = $releaseTag -replace '^v', ''
+
+          Write-Host "Branch: $branch"
+          Write-Host "Release tag: $releaseTag"
+          Write-Host "Version: $version"
+
+          # Validate version format and branch consistency
+          if ($branch -eq "net8" -or $branch.StartsWith("net8-")) {
+            if ($version -notmatch '^1\.0\.') {
+              Write-Error "ERROR: Branch 'net8' must use version 1.0.x, but got $version"
+              exit 1
+            }
+            Write-Host "✓ Valid: net8 branch with version $version"
+          } elseif ($branch -eq "net9" -or $branch.StartsWith("net9-")) {
+            if ($version -notmatch '^1\.1\.') {
+              Write-Error "ERROR: Branch 'net9' must use version 1.1.x, but got $version"
+              exit 1
+            }
+            Write-Host "✓ Valid: net9 branch with version $version"
+          } elseif ($branch -eq "net10" -or $branch.StartsWith("net10-")) {
+            if ($version -notmatch '^1\.2\.') {
+              Write-Error "ERROR: Branch 'net10' must use version 1.2.x, but got $version"
+              exit 1
+            }
+            Write-Host "✓ Valid: net10 branch with version $version"
+          } else {
+            Write-Error "ERROR: Release must be created from net8, net9, or net10 branch"
+            exit 1
+          }
+
       # Detect .NET SDK version based on branch
       - name: Determine .NET SDK Version
         id: dotnet_version
