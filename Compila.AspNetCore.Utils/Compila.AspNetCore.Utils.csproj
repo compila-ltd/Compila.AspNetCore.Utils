@@ -12,10 +12,11 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Compila.Net.Utils" Version="1.0.26" />
+		<PackageReference Include="Compila.Net.Utils" Version="1.1.30" />
 		<PackageReference Include="FluentValidation" Version="12.1.1" />
 		<PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Json" Version="2.3.9" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.10" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
 		<PackageReference Include="RabbitMQ.Client" Version="7.2.0" />
 	</ItemGroup>
 	
@@ -33,7 +34,7 @@
 		<RepositoryUrl>https://github.com/compila-ltd/Compila.AspNetCore.Utils</RepositoryUrl>
 		<RepositoryBranch>master</RepositoryBranch>
 		<PackageId>Compila.AspNetCore.Utils</PackageId>
-		<Version>1.1.10</Version>
+		<Version>1.1.11</Version>
 		<Authors>Eyonys Gonzalez Marcaida</Authors>
 		<Company>Compila</Company>
 		<PackageDescription>Utils for Compila development projects targeting NET9.</PackageDescription>
