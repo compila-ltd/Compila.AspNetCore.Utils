@@ -33,10 +33,10 @@
 		<RepositoryUrl>https://github.com/compila-ltd/Compila.AspNetCore.Utils</RepositoryUrl>
 		<RepositoryBranch>master</RepositoryBranch>
 		<PackageId>Compila.AspNetCore.Utils</PackageId>
-		<Version>1.0.8</Version>
+		<Version>1.1.10</Version>
 		<Authors>Eyonys Gonzalez Marcaida</Authors>
 		<Company>Compila</Company>
-		<PackageDescription>Utils for Compila development projects.</PackageDescription>
+		<PackageDescription>Utils for Compila development projects targeting NET9.</PackageDescription>
 		<PackageTags>http, rest, api</PackageTags>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
